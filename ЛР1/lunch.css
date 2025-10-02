@@ -1,4 +1,4 @@
-/* Основные стили для страницы "Собрать ланч" */
+/* Стили только для страницы "Собрать ланч" */
 
 .dishes-grid {
   display: grid;
@@ -15,15 +15,25 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: all 0.3s ease;
+  transition: border 0.3s ease;
+  border: 2px solid transparent;
 }
 
 .dish-card:hover {
   border: 2px solid tomato;
 }
 
+/* .dish-card img {
+  width: 100%;
+  border-radius: 35px;
+  margin-bottom: 15px;
+} */
+
 .dish-card img {
   width: 100%;
+  height: 250px; /* Фиксированная высота для квадрата или прямоугольника */
+  object-fit: cover; /* Обрезает изображение, чтобы заполнить контейнер без искажений */
+  object-position: center; /* Центрирует изображение при обрезке */
   border-radius: 35px;
   margin-bottom: 15px;
 }
@@ -67,9 +77,7 @@
   }
   
   header {
-    margin: 20px 0 20px 20px;
-    flex-direction: column;
-    align-items: flex-start;
+    padding: 20px;
   }
   
   h1 {
@@ -80,6 +88,10 @@
   nav {
     justify-content: space-between;
     width: 100%;
+  }
+  
+  main {
+    padding: 0 20px 40px;
   }
   
   section h2 {
@@ -93,7 +105,7 @@
   }
   
   header {
-    margin: 20px 0 20px 10px;
+    padding: 20px 10px;
   }
   
   h1 {
@@ -109,6 +121,10 @@
   nav a {
     font-size: 1.5em;
     padding: 10px 15px;
+  }
+  
+  main {
+    padding: 0 10px 40px;
   }
   
   section h2 {
