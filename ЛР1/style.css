@@ -115,14 +115,15 @@ th {
 
 footer {
   background-color: black;
-  color: white;
-  padding: 30px 48px;
+  color: white; /* Цвет текста белый */
+  padding: 30px 48px; /* Отступы как в остальном документе */
   margin-top: auto;
 }
 
 footer p {
   margin: 0;
   font-size: 1.2em;
+  color: white; /* Цвет текста белый */
 }
 
 footer a {
@@ -162,6 +163,10 @@ footer a:hover {
   table {
     font-size: 0.9em;
   }
+  
+  footer {
+    padding: 30px 20px; /* Адаптивный отступ */
+  }
 }
 
 @media (max-width: 600px) {
@@ -196,10 +201,18 @@ footer a:hover {
   table {
     font-size: 0.8em;
   }
+
+  footer {
+    padding: 30px 20px; /* Адаптивный отступ */
+  }
 }
 
 @media (max-width: 400px) {
   table {
     font-size: 0.7em;
+  }
+
+  footer {
+    padding: 30px 20px; /* Адаптивный отступ */
   }
 }
