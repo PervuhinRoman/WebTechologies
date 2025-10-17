@@ -1,5 +1,4 @@
-// Выбранные блюда — теперь 5 категорий
-let selectedDishes = {
+selectedDishes = {
   soup: null,
   main: null,
   drink: null,
@@ -13,7 +12,6 @@ document.addEventListener('DOMContentLoaded', function() {
       const card = e.target.closest('.dish-card');
       const keyword = card.getAttribute('data-dish');
       
-      // Находим блюдо в массиве
       const dish = dishes.find(d => d.keyword === keyword);
       if (!dish) return;
 
