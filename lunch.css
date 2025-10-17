@@ -255,6 +255,10 @@
   background-color: #d63031;
 }
 
+#nothing-selected {
+  margin-bottom: 16px;
+}
+
 /* Адаптивность для формы */
 @media (max-width: 800px) {
   .form-columns {
