@@ -1,12 +1,12 @@
-// displayDishes.js
-
 document.addEventListener('DOMContentLoaded', function() {
   const sortedDishes = [...dishes].sort((a, b) => a.name.localeCompare(b.name));
 
-  // По категориям
+  // Разделяем по категориям
   const soups = sortedDishes.filter(dish => dish.category === 'soup');
   const mains = sortedDishes.filter(dish => dish.category === 'main');
   const drinks = sortedDishes.filter(dish => dish.category === 'drink');
+  const starters = sortedDishes.filter(dish => dish.category === 'starter');
+  const desserts = sortedDishes.filter(dish => dish.category === 'dessert');
 
   // Функция для создания карточки
   function createDishCard(dish) {
@@ -25,24 +25,22 @@ document.addEventListener('DOMContentLoaded', function() {
     return card;
   }
 
-  // Супы
-  const soupSection = document.querySelector('section:nth-of-type(1) .dishes-grid');
-  soups.forEach(dish => {
-    const card = createDishCard(dish);
-    soupSection.appendChild(card);
-  });
+  // Функция для отображения блюд в секции
+  function renderDishes(sectionIndex, dishesArray) {
+    const section = document.querySelectorAll('section')[sectionIndex];
+    const grid = section.querySelector('.dishes-grid');
+    grid.innerHTML = ''; // Очищаем
 
-  // Основные блюда
-  const mainSection = document.querySelector('section:nth-of-type(2) .dishes-grid');
-  mains.forEach(dish => {
-    const card = createDishCard(dish);
-    mainSection.appendChild(card);
-  });
+    dishesArray.forEach(dish => {
+      const card = createDishCard(dish);
+      grid.appendChild(card);
+    });
+  }
 
-  // Напитки
-  const drinkSection = document.querySelector('section:nth-of-type(3) .dishes-grid');
-  drinks.forEach(dish => {
-    const card = createDishCard(dish);
-    drinkSection.appendChild(card);
-  });
+  // Отображаем все категории
+  renderDishes(0, soups);
+  renderDishes(1, mains);
+  renderDishes(2, drinks);
+  renderDishes(3, starters);
+  renderDishes(4, desserts);
 });

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,11 +8,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="lunch.css" />
   <link rel="icon" href="icon.png" type="image/x-icon">
 </head>
+
 <body>
   <div class="page-container">
     <header>
@@ -23,20 +27,53 @@
         <a href="#footer">Контакты</a>
       </nav>
     </header>
-
     <main>
       <section>
         <h2>Выберите суп</h2>
+        <div class="filters">
+          <button data-kind="fish">рыбный</button>
+          <button data-kind="meat">мясной</button>
+          <button data-kind="veg">вегетарианский</button>
+        </div>
         <div class="dishes-grid"></div>
       </section>
 
       <section>
         <h2>Выберите главное блюдо</h2>
+        <div class="filters">
+          <button data-kind="fish">рыбное</button>
+          <button data-kind="meat">мясное</button>
+          <button data-kind="veg">вегетарианское</button>
+        </div>
         <div class="dishes-grid"></div>
       </section>
 
       <section>
         <h2>Выберите напиток</h2>
+        <div class="filters">
+          <button data-kind="cold">холодный</button>
+          <button data-kind="hot">горячий</button>
+        </div>
+        <div class="dishes-grid"></div>
+      </section>
+
+      <section>
+        <h2>Выберите салат или стартер</h2>
+        <div class="filters">
+          <button data-kind="fish">рыбный</button>
+          <button data-kind="meat">мясной</button>
+          <button data-kind="veg">вегетарианский</button>
+        </div>
+        <div class="dishes-grid"></div>
+      </section>
+
+      <section>
+        <h2>Выберите десерт</h2>
+        <div class="filters">
+          <button data-kind="small">маленькая порция</button>
+          <button data-kind="medium">средняя порция</button>
+          <button data-kind="large">большая порция</button>
+        </div>
         <div class="dishes-grid"></div>
       </section>
     </main>
@@ -91,7 +128,8 @@
               <label>Время доставки:</label>
               <div class="radio-group">
                 <div>
-                  <input type="radio" id="as_soon_as_possible" name="delivery_time_option" value="as_soon_as_possible" required>
+                  <input type="radio" id="as_soon_as_possible" name="delivery_time_option" value="as_soon_as_possible"
+                    required>
                   <label for="as_soon_as_possible">Как можно скорее</label>
                 </div>
                 <div>
@@ -124,5 +162,7 @@
   <script src="dishes.js"></script>
   <script src="displayDishes.js"></script>
   <script src="orderHandler.js"></script>
+  <script src="filterHandler.js"></script>
 </body>
+
 </html>

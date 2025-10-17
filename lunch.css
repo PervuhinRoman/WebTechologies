@@ -259,6 +259,38 @@
   margin-bottom: 16px;
 }
 
+/* Стили для всех кнопок фильтров */
+.filters {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+  justify-content: left; 
+}
+
+.filters button {
+  background: none;
+  border: none;
+  color: #28a745;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filters button.active {
+  background-color: #d4edda;
+  border-color: #28a745;
+  color: #155724;
+  box-shadow: 0 0 5px rgba(40, 167, 69, 0.3);
+}
+
+/* При наведении на неактивную кнопку */
+.filters button:hover:not(.active) {
+  background-color: #e8f5e8;
+  color: #155724;
+}
+
 /* Адаптивность для формы */
 @media (max-width: 800px) {
   .form-columns {
