@@ -1,21 +1,45 @@
-document.addEventListener('DOMContentLoaded', function() {
+// Глобальная переменная для хранения загруженных блюд
+window.dishesData = [];
+
+/**
+ * Загружает список блюд с API и отображает их на странице.
+ */
+async function loadDishes() {
+  try {
+    const response = await fetch('https://edu.std-900.ist.mospolytech.ru/labs/api/dishes');
+    if (!response.ok) {
+      throw new Error(`Ошибка HTTP: ${response.status}`);
+    }
+    const dishes = await response.json();
+    window.dishesData = dishes;
+
+    displayDishes(dishes);
+  } catch (error) {
+    console.error('Не удалось загрузить блюда:', error);
+    document.body.innerHTML += `<div style="color:red;text-align:center;padding:20px;">Ошибка загрузки меню. Попробуйте позже.</div>`;
+  }
+}
+
+/**
+ * Отображает блюда на странице (без запроса к API).
+ * @param {Array} dishes — массив блюд
+ */
+function displayDishes(dishes) {
   const sortedDishes = [...dishes].sort((a, b) => a.name.localeCompare(b.name));
 
-  // Разделяем по категориям
   const soups = sortedDishes.filter(dish => dish.category === 'soup');
-  const mains = sortedDishes.filter(dish => dish.category === 'main');
+  const mains = sortedDishes.filter(dish => dish.category === 'main-course');
   const drinks = sortedDishes.filter(dish => dish.category === 'drink');
-  const starters = sortedDishes.filter(dish => dish.category === 'starter');
+  const starters = sortedDishes.filter(dish => dish.category === 'salad');
   const desserts = sortedDishes.filter(dish => dish.category === 'dessert');
 
-  // Функция для создания карточки
   function createDishCard(dish) {
     const card = document.createElement('div');
     card.className = 'dish-card';
     card.setAttribute('data-dish', dish.keyword);
 
     card.innerHTML = `
-      <img src="${dish.image}" alt="${dish.name}">
+      <img src="${dish.image}" alt="${dish.name}" onerror="this.src='https://via.placeholder.com/150?text=No+Image'">
       <p class="price">${dish.price}₽</p>
       <p class="name">${dish.name}</p>
       <p class="weight">${dish.count}</p>
@@ -25,22 +49,28 @@ document.addEventListener('DOMContentLoaded', function() {
     return card;
   }
 
-  // Функция для отображения блюд в секции
   function renderDishes(sectionIndex, dishesArray) {
-    const section = document.querySelectorAll('section')[sectionIndex];
-    const grid = section.querySelector('.dishes-grid');
-    grid.innerHTML = ''; // Очищаем
+    const sections = document.querySelectorAll('section');
+    if (sectionIndex >= sections.length) return;
 
+    const section = sections[sectionIndex];
+    const grid = section.querySelector('.dishes-grid');
+    if (!grid) return;
+
+    grid.innerHTML = '';
     dishesArray.forEach(dish => {
       const card = createDishCard(dish);
       grid.appendChild(card);
     });
   }
 
-  // Отображаем все категории
-  renderDishes(0, soups);
-  renderDishes(1, mains);
-  renderDishes(2, drinks);
-  renderDishes(3, starters);
-  renderDishes(4, desserts);
-});
+  // Порядок категорий
+  renderDishes(0, soups);      
+  renderDishes(1, mains);      
+  renderDishes(2, drinks);     
+  renderDishes(3, starters);   
+  renderDishes(4, desserts);   
+}
+
+// Запускаем загрузку при готовности DOM
+document.addEventListener('DOMContentLoaded', loadDishes);

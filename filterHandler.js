@@ -6,9 +6,9 @@ document.addEventListener('DOMContentLoaded', function() {
       const kind = button.getAttribute('data-kind');
       const section = button.closest('section');
       const category = section.querySelector('h2').textContent.toLowerCase().includes('суп') ? 'soup' :
-                      section.querySelector('h2').textContent.toLowerCase().includes('главное') ? 'main' :
+                      section.querySelector('h2').textContent.toLowerCase().includes('главное') ? 'main-course' :
                       section.querySelector('h2').textContent.toLowerCase().includes('напиток') ? 'drink' :
-                      section.querySelector('h2').textContent.toLowerCase().includes('салат') ? 'starter' : 'dessert';
+                      section.querySelector('h2').textContent.toLowerCase().includes('салат') ? 'salad' : 'dessert';
 
       // Переключаем класс active
       const filters = section.querySelectorAll('.filters button');
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }
 
       // Фильтруем блюда
-      let filteredDishes = dishes.filter(dish => dish.category === category);
+      let filteredDishes = window.dishesData.filter(dish => dish.category === category);
       if (button.classList.contains('active')) {
         filteredDishes = filteredDishes.filter(dish => dish.kind === kind);
       }

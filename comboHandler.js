@@ -4,10 +4,8 @@ document.addEventListener('DOMContentLoaded', function() {
   form.addEventListener('submit', function(e) {
     e.preventDefault(); 
 
-    // Получаем выбранные блюда из orderHandler
     const selected = getSelectedDishes();
 
-    // Проверяем, есть ли хоть одно блюдо
     if (!hasAnyDish(selected)) {
       showNotification('Ничего не выбрано. Выберите блюда для заказа');
       return;
@@ -28,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Функция для получения выбранных блюд (возвращает объект)
 function getSelectedDishes() {
-  // Это ссылка на глобальный объект из orderHandler.js
+  // Ссылка на глобальный объект из orderHandler.js
   return selectedDishes;
 }
 
@@ -38,7 +36,7 @@ function hasAnyDish(selected) {
 
 // Проверка комбо
 function checkCombo(selected) {
-  const { soup, main, starter, drink, dessert } = selected;
+  const { soup, 'main-course': main, starter, drink, dessert } = selected;
 
   // Комбо 1: Суп + Главное + Салат + Напиток
   if (soup && main && starter && drink) return true;
@@ -59,7 +57,7 @@ function checkCombo(selected) {
 }
 
 function getMissingMessage(selected) {
-  const { soup, main, starter, drink, dessert } = selected;
+  const { soup, 'main-course': main, starter, drink, dessert } = selected;
 
   // Если нет напитка — но есть другие блюда
   if (drink === null && (soup || main || starter)) {

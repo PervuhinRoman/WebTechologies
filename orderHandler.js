@@ -1,8 +1,8 @@
 selectedDishes = {
   soup: null,
-  main: null,
+  'main-course': null,
   drink: null,
-  starter: null,
+  salad: null,
   dessert: null
 };
 
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const card = e.target.closest('.dish-card');
       const keyword = card.getAttribute('data-dish');
       
-      const dish = dishes.find(d => d.keyword === keyword);
+      const dish = window.dishesData.find(d => d.keyword === keyword);
       if (!dish) return;
 
       const category = dish.category;
@@ -29,9 +29,9 @@ function updateOrderForm() {
   const orderSummary = document.querySelector('.order-summary');
 
   const hasSoup = selectedDishes.soup !== null;
-  const hasMain = selectedDishes.main !== null;
+  const hasMain = selectedDishes['main-course'] !== null;
   const hasDrink = selectedDishes.drink !== null;
-  const hasStarter = selectedDishes.starter !== null;
+  const hasStarter = selectedDishes.salad !== null;
   const hasDessert = selectedDishes.dessert !== null;
 
   const hasSelected = hasSoup || hasMain || hasDrink || hasStarter || hasDessert;
@@ -54,16 +54,16 @@ function updateOrderForm() {
 
   // Главное блюдо
   if (hasMain) {
-    lines.push(`<div class="form-group"><label>Главное блюдо:</label> ${selectedDishes.main.name} — ${selectedDishes.main.price}₽</div>`);
-    totalPrice += selectedDishes.main.price;
+    lines.push(`<div class="form-group"><label>Главное блюдо:</label> ${selectedDishes['main-course'].name} — ${selectedDishes['main-course'].price}₽</div>`);
+    totalPrice += selectedDishes['main-course'].price;
   } else {
     lines.push('<div class="form-group"><label>Главное блюдо:</label> Блюдо не выбрано</div>');
   }
 
   // Салат/стартер
   if (hasStarter) {
-    lines.push(`<div class="form-group"><label>Салат или стартер:</label> ${selectedDishes.starter.name} — ${selectedDishes.starter.price}₽</div>`);
-    totalPrice += selectedDishes.starter.price;
+    lines.push(`<div class="form-group"><label>Салат или стартер:</label> ${selectedDishes.salad.name} — ${selectedDishes.salad.price}₽</div>`);
+    totalPrice += selectedDishes.salad.price;
   } else {
     lines.push('<div class="form-group"><label>Салат или стартер:</label> Блюдо не выбрано</div>');
   }
