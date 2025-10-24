@@ -1,9 +1,6 @@
 // Глобальная переменная для хранения загруженных блюд
 window.dishesData = [];
 
-/**
- * Загружает список блюд с API и отображает их на странице.
- */
 async function loadDishes() {
   try {
     const response = await fetch('https://edu.std-900.ist.mospolytech.ru/labs/api/dishes');
@@ -20,10 +17,6 @@ async function loadDishes() {
   }
 }
 
-/**
- * Отображает блюда на странице (без запроса к API).
- * @param {Array} dishes — массив блюд
- */
 function displayDishes(dishes) {
   const sortedDishes = [...dishes].sort((a, b) => a.name.localeCompare(b.name));
 

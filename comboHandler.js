@@ -1,10 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
   const form = document.querySelector('.order-form');
+  if (!form) return; // Защита, если формы нет
 
-  form.addEventListener('submit', function(e) {
-    e.preventDefault(); 
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
 
-    const selected = getSelectedDishes();
+    // Получаем выбранные блюда из localStorage
+    const selected = await getSelectedDishesFromStorage();
 
     if (!hasAnyDish(selected)) {
       showNotification('Ничего не выбрано. Выберите блюда для заказа');
@@ -20,70 +22,81 @@ document.addEventListener('DOMContentLoaded', function() {
       return;
     }
 
-    form.submit(); 
+    // Если всё ок — отправляем форму
+    form.submit();
   });
 });
 
-// Функция для получения выбранных блюд (возвращает объект)
-function getSelectedDishes() {
-  // Ссылка на глобальный объект из orderHandler.js
-  return selectedDishes;
+// Загружаем выбранные блюда из localStorage + API
+async function getSelectedDishesFromStorage() {
+  const saved = localStorage.getItem('foodConstructOrder');
+  if (!saved) {
+    return { soup: null, 'main-course': null, drink: null, salad: null, dessert: null };
+  }
+
+  try {
+    const keywords = JSON.parse(saved);
+    const response = await fetch('https://edu.std-900.ist.mospolytech.ru/labs/api/dishes');
+    const allDishes = await response.json();
+
+    const selected = {
+      soup: null,
+      'main-course': null,
+      drink: null,
+      salad: null,
+      dessert: null
+    };
+
+    for (const [category, keyword] of Object.entries(keywords)) {
+      if (keyword && allDishes) {
+        const dish = allDishes.find(d => d.keyword === keyword);
+        if (dish) selected[category] = dish;
+      }
+    }
+
+    return selected;
+  } catch (error) {
+    console.error('Ошибка при загрузке данных для проверки комбо:', error);
+    return { soup: null, 'main-course': null, drink: null, salad: null, dessert: null };
+  }
 }
 
 function hasAnyDish(selected) {
   return Object.values(selected).some(dish => dish !== null);
 }
 
-// Проверка комбо
+// Проверка комбо (без изменений)
 function checkCombo(selected) {
-  const { soup, 'main-course': main, starter, drink, dessert } = selected;
+  const { soup, 'main-course': main, salad: starter, drink, dessert } = selected;
 
-  // Комбо 1: Суп + Главное + Салат + Напиток
   if (soup && main && starter && drink) return true;
-
-  // Комбо 2: Суп + Главное + Напиток
   if (soup && main && drink) return true;
-
-  // Комбо 3: Суп + Салат + Напиток
   if (soup && starter && drink) return true;
-
-  // Комбо 4: Главное + Салат + Напиток
   if (main && starter && drink) return true;
-
-  // Комбо 5: Главное + Напиток
   if (main && drink) return true;
 
   return false;
 }
 
 function getMissingMessage(selected) {
-  const { soup, 'main-course': main, starter, drink, dessert } = selected;
+  const { soup, 'main-course': main, salad: starter, drink, dessert } = selected;
 
-  // Если нет напитка — но есть другие блюда
   if (drink === null && (soup || main || starter)) {
     return 'Выберите напиток';
   }
-
-  // Если есть суп, но нет главного и салата
   if (soup && !main && !starter) {
     return 'Выберите главное блюдо/салат/стартер';
   }
-
-  // Если есть салат, но нет супа и главного
   if (starter && !soup && !main) {
     return 'Выберите суп или главное блюдо';
   }
-
-  // Если есть напиток/десерт, но нет главного
   if (drink && !main && !soup && !starter) {
     return 'Выберите главное блюдо';
   }
-
-  // По умолчанию — "ничего не выбрано" уже обработано выше
   return 'Недостаточно блюд для оформления заказа';
 }
 
-// Показ уведомления
+// Функция showNotification (без изменений)
 function showNotification(message) {
   const existing = document.getElementById('notification-overlay');
   if (existing) existing.remove();
