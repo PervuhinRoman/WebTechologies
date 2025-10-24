@@ -114,11 +114,11 @@ function setupDeleteDelegation() {
         const title = titles[category] || category;
 
         card.innerHTML = `
-      <div style="height: 150px; display: flex; align-items: center; justify-content: center; color: #888;">
-        ${title} не выбрано
-      </div>
-      <p class="name" style="text-align: center; margin-top: 10px;">${title}</p>
-      <button class="btn-delete" data-category="${category}" disabled>Удалить</button>
+            <div style="height: 150px; display: flex; align-items: center; justify-content: center; color: #888;">
+                ${title} не выбрано
+            </div>
+            <p class="name" style="text-align: center; margin-top: 10px;">${title}</p>
+            <button class="btn-delete" data-category="${category}" disabled>Удалить</button>
     `;
 
         // Обновляем сводку заказа
