@@ -365,6 +365,75 @@
   color: #ff6f00;
 }
 
+/* Панель перехода к оформлению заказа */
+.checkout-sticky-panel {
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  padding: 15px 48px;
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  display: none; /* Скрыта по умолчанию */
+}
+
+.checkout-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.total-info {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.total-info strong {
+  color: #e63946;
+  margin-left: 8px;
+}
+
+.btn-checkout {
+  background-color: #e63946;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn-checkout:hover:not(.disabled) {
+  background-color: #d63031;
+  color: white;
+}
+
+.btn-checkout.disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Адаптивность для панели */
+@media (max-width: 768px) {
+  .checkout-sticky-panel {
+    padding: 12px 20px;
+  }
+  
+  .checkout-content {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+  
+  .total-info {
+    font-size: 1.1em;
+  }
+}
+
 /* Адаптивность для формы */
 @media (max-width: 800px) {
   .form-columns {
