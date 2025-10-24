@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="pow.js"></script>
+    <script src="gcd.js"></script>
+    <script src="minDIgit.js"></script>
+    <script src="puralization.js"></script>
+    <script src="fibb.js"></script>
+    <script src="sort.js"></script>
+    <script src="cesar.js"></script>
+    <script>
+        console.log(pow(2, 3));
+        console.log(gcd(451, 287));
+        console.log(minDigit(35173));
+
+        console.log(pluralizeRecords(0));   // В результате выполнения запроса было найдено 0 записей
+        console.log(pluralizeRecords(1));   // В результате выполнения запроса было найдено 1 запись
+        console.log(pluralizeRecords(2));   // В результате выполнения запроса было найдено 2 записи
+        console.log(pluralizeRecords(5));   // В результате выполнения запроса было найдено 5 записей
+        console.log(pluralizeRecords(11));  // В результате выполнения запроса было найдено 11 записей
+        console.log(pluralizeRecords(21));  // В результате выполнения запроса было найдено 21 запись
+        console.log(pluralizeRecords(22));  // В результате выполнения запроса было найдено 22 записи
+        console.log(pluralizeRecords(112)); // В результате выполнения запроса было найдено 112 записей
+
+        console.log(fibb(10));
+
+        const users = [
+            { name: 'Alice', grade: 4 },
+            { name: 'Bob', grade: 5 },
+            { name: 'Charlie', grade: 3 }
+        ];
+
+        console.log(getSortedArray(users, 'grade'));
+        // [{ name: 'Bob', age: 25 }, { name: 'Alice', age: 30 }, { name: 'Charlie', age: 35 }]
+
+        console.log(getSortedArray(users, 'name'));
+
+        // Расшифровка сообщения:
+        const encrypted = "эзтыхз фзъзъз";
+        const enc = cesar("привет", 2, "encode");
+        // Перебираем возможные сдвиги или угадываем по смыслу.
+        // Попробуем shift = 4, action = 'decode'
+        const dec = cesar(enc, 2, 'decode');
+        console.log(dec); // "цезарь жеёже"
+
+        const decrypted = cesar(encrypted, 4, 'decode');
+        console.log(decrypted);
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Математическая игра</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="game-container" id="gameContainer">
+    <h1>Math Game</h1>
+
+    <!-- Информация о уровне -->
+    <div class="level-info" id="levelInfo">Уровень: <span id="levelName">Начальный</span></div>
+    <div class="timer" id="timer">Время: 4:30</div>
+
+    <!-- Вопрос -->
+    <div class="question" id="question">Загрузка...</div>
+
+    <!-- Поле ввода -->
+    <input type="text" id="answerInput" placeholder="Введите ответ" />
+
+    <!-- Кнопка отправки -->
+    <button id="submitBtn">Отправить</button>
+
+    <!-- Результат последнего ответа -->
+    <div class="result" id="result"></div>
+
+    <!-- Статистика -->
+    <div class="stats">
+      <div class="correct">Правильно: <span id="correctCount">0</span></div>
+      <div class="incorrect">Неправильно: <span id="incorrectCount">0</span></div>
+    </div>
+
+    <!-- Сообщение о переходе или окончании -->
+    <div id="message" class="message hidden"></div>
+
+    <!-- Кнопки после завершения -->
+    <div id="endButtons" class="hidden">
+      <button id="restartBtn">Перезапустить игру</button>
+      <button id="exitBtn">Выйти</button>
+    </div>
+
+    <!-- Конечное сообщение -->
+    <div id="endMessage" class="end-message hidden"></div>
+  </div>
+
+  <script src="alg.js"></script>
+</body>
+</html>
