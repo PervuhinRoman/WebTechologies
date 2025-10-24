@@ -59,6 +59,88 @@
         </footer>
     </div>
 
+    <!-- Модальное окно: Просмотр заказа -->
+    <div id="viewModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Просмотр заказа</h3>
+            <div id="viewOrderDetails"></div>
+            <button class="btn-ok">ОК</button>
+        </div>
+    </div>
+
+    <!-- Модальное окно: Редактирование заказа -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Редактирование заказа</h3>
+            <form id="editOrderForm">
+                <input type="hidden" id="editOrderId">
+                <div class="form-group">
+                    <label>Дата оформления</label>
+                    <span id="editCreatedAt"></span>
+                </div>
+                <div class="form-group">
+                    <label>Имя получателя</label>
+                    <input type="text" id="editFullName" required>
+                </div>
+                <div class="form-group">
+                    <label>Адрес доставки</label>
+                    <input type="text" id="editDeliveryAddress" required>
+                </div>
+                <div class="form-group">
+                    <label>Время доставки</label>
+                    <div>
+                        <input type="radio" id="editNow" name="editDeliveryType" value="now" required>
+                        <label for="editNow">Как можно скорее</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="editByTime" name="editDeliveryType" value="by_time">
+                        <label for="editByTime">К указанному времени</label>
+                    </div>
+                    <input type="time" id="editDeliveryTime" min="07:00" max="23:00" step="300" disabled>
+                </div>
+                <div class="form-group">
+                    <label>Телефон</label>
+                    <input type="tel" id="editPhone" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="editEmail" required>
+                </div>
+                <div class="form-group">
+                    <label>Комментарий</label>
+                    <textarea id="editComment" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Состав заказа</label>
+                    <div id="editComposition"></div>
+                </div>
+                <div class="form-group">
+                    <label>Стоимость</label>
+                    <span id="editTotalPrice"></span>
+                </div>
+                <div class="form-buttons">
+                    <button type="button" class="btn-cancel">Отмена</button>
+                    <button type="submit" class="btn-save">Сохранить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Модальное окно: Подтверждение удаления -->
+    <div id="deleteModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Удаление заказа</h3>
+            <p>Вы уверены, что хотите удалить этот заказ? Это действие нельзя отменить.</p>
+            <div class="form-buttons">
+                <button type="button" class="btn-cancel" id="id-btn-cancel">Отмена</button>
+                <button type="button" class="btn-delete-confirm">Да, удалить</button>
+            </div>
+        </div>
+    </div>
+
     <script src="dishes.js"></script>
     <script src="orders.js"></script>
 </body>
