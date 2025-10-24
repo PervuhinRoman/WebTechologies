@@ -1,111 +1,120 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Оформить заказ - Food Construct</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="lunch.css" />
-  <link rel="icon" href="icon.png" type="image/x-icon">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Оформить заказ - Food Construct</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="lunch.css" />
+    <link rel="icon" href="icon.png" type="image/x-icon">
 </head>
+
 <body>
-  <div class="page-container">
-    <header>
-      <h1>Food Construct</h1>
-      <nav>
-        <a href="index.html">О нас</a>
-        <a href="lunch.html">Собрать ланч</a>
-        <a href="order.html" class="active">Оформить заказ</a>
-        <a href="#footer">Контакты</a>
-      </nav>
-    </header>
+    <div class="page-container">
+        <header>
+            <h1>Food Construct</h1>
+            <nav>
+                <a href="index.html">О нас</a>
+                <a href="lunch.html">Собрать ланч</a>
+                <a href="order.html" class="active">Оформить заказ</a>
+                <a href="#footer">Контакты</a>
+            </nav>
+        </header>
 
-    <main>
-      <section class="order-dishes-section">
-        <h2>Состав заказа</h2>
-        <div class="dishes-grid" id="order-dishes-grid">
-          <!-- Сюда будут подгружаться выбранные блюда -->
-        </div>
-      </section>
-    </main>
-
-    <!-- Форма оформления заказа (копия из lunch.html) -->
-    <section class="order-form-section">
-      <h2>Оформление заказа</h2>
-      <form action="https://httpbin.org/post" method="POST" class="order-form">
-        <div class="form-columns">
-          <div class="form-column">
-            <h3>Ваш заказ</h3>
-            <div class="order-summary" id="order-summary"></div>
-
-            <div class="form-group">
-              <label for="comments">Комментарии к заказу</label>
-              <textarea id="comments" name="comments" rows="4"></textarea>
-            </div>
-          </div>
-
-          <div class="form-column">
-            <h3>Ваши данные</h3>
-            <div class="form-group">
-              <label for="name">Имя</label>
-              <input type="text" id="name" name="name" required>
-            </div>
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group checkbox-group">
-              <input type="checkbox" id="newsletter" name="newsletter" checked>
-              <label for="newsletter">Получать информацию о скидках и акциях</label>
-            </div>
-            <div class="form-group">
-              <label for="phone">Номер телефона</label>
-              <input type="tel" id="phone" name="phone" required>
-            </div>
-            <div class="form-group">
-              <label for="address">Адрес доставки</label>
-              <input type="text" id="address" name="address" required>
-              <small>Доставка осуществляется только по Москве</small>
-            </div>
-            <div class="form-group">
-              <label>Время доставки:</label>
-              <div class="radio-group">
-                <div>
-                  <input type="radio" id="as_soon_as_possible" name="delivery_time_option" value="as_soon_as_possible" required>
-                  <label for="as_soon_as_possible">Как можно скорее</label>
+        <main>
+            <section class="order-dishes-section">
+                <h2>Состав заказа</h2>
+                <div class="dishes-grid" id="order-dishes-grid">
+                    <!-- Сюда будут подгружаться выбранные блюда -->
                 </div>
-                <div>
-                  <input type="radio" id="specified_time" name="delivery_time_option" value="specified_time">
-                  <label for="specified_time">К указанному времени</label>
+            </section>
+        </main>
+
+        <!-- Форма оформления заказа (копия из lunch.html) -->
+        <section class="order-form-section">
+            <h2>Оформление заказа</h2>
+            <form action="https://httpbin.org/post" method="POST" class="order-form">
+                <div class="form-columns">
+                    <div class="form-column">
+                        <h3>Ваш заказ</h3>
+                        <div class="order-summary" id="order-summary"></div>
+
+                        <div class="form-group">
+                            <label for="comment">Комментарии к заказу</label>
+                            <textarea id="comment" name="comment" rows="4"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-column">
+                        <h3>Ваши данные</h3>
+                        <div class="form-group">
+                            <label for="full_name">Имя</label>
+                            <input type="text" id="full_name" name="full_name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="subscribe" name="subscribe" checked>
+                            <label for="subscribe">Получать информацию о скидках и акциях</label>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Номер телефона</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="delivery_address">Адрес доставки</label>
+                            <input type="text" id="delivery_address" name="delivery_address" required>
+                        </div>
+
+                        <div class="radio-group">
+                            <div>
+                                <input type="radio" id="as_soon_as_possible" name="delivery_type" value="now" required>
+                                <label for="as_soon_as_possible">Как можно скорее</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="specified_time" name="delivery_type" value="by_time">
+                                <label for="specified_time">К указанному времени</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="delivery_time">Укажите время доставки</label>
+                            <input type="time" id="delivery_time" name="delivery_time" min="07:00" max="23:00"
+                                step="300">
+                        </div>
+                    </div>
                 </div>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="delivery_time">Укажите время доставки</label>
-              <input type="time" id="delivery_time" name="delivery_time" min="07:00" max="23:00" step="300">
-              <small>Доступное время доставки с 7:00 до 23:00</small>
-            </div>
-          </div>
-        </div>
 
-        <div class="form-buttons">
-          <a href="lunch.html" class="btn-reset" style="text-decoration: none; display: inline-block; padding: 10px 20px;">Назад к сборке</a>
-          <button type="submit" class="btn-submit">Отправить заказ</button>
-        </div>
-      </form>
-    </section>
+                <div class="form-buttons">
+                    <a href="lunch.html" class="btn-reset"
+                        style="text-decoration: none; display: inline-block; padding: 10px 20px;">Назад к сборке</a>
+                    <button type="submit" class="btn-submit">Отправить заказ</button>
+                </div>
+            </form>
+        </section>
 
-    <footer id="footer">
-      <p>Позвонить нам <a href="tel:+70000000000">+7-000-000-00-00</a></p>
-    </footer>
-  </div>
+        <footer id="footer">
+            <p>Позвонить нам <a href="tel:+70000000000">+7-000-000-00-00</a></p>
+        </footer>
+    </div>
 
-  <script src="dishes.js"></script>
-  <script src="orderPage.js"></script>
-  <script src="comboHandler.js"></script>
+    <script src="dishes.js"></script>
+    <script src="orderPage.js"></script>
+    <script src="comboHandler.js"></script>
+    <script src="orderSubmit.js"></script>
 </body>
+
 </html>

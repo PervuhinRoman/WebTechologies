@@ -58,11 +58,11 @@ function displayDishes(dishes) {
   }
 
   // Порядок категорий
-  renderDishes(0, soups);      
-  renderDishes(1, mains);      
-  renderDishes(2, drinks);     
-  renderDishes(3, starters);   
-  renderDishes(4, desserts);   
+  renderDishes(0, soups);
+  renderDishes(1, mains);
+  renderDishes(2, drinks);
+  renderDishes(3, starters);
+  renderDishes(4, desserts);
 }
 
 // Запускаем загрузку при готовности DOM
