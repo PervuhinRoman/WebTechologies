@@ -36,18 +36,17 @@ async function initOrderPage() {
 }
 
 function showEmptyOrder() {
-  // Отображаем в сетке блюд (верх страницы)
-  const grid = document.getElementById('order-dishes-grid');
-  grid.innerHTML = `
-    <div style="grid-column: 1 / -1; text-align: center; padding: 30px; display: none;">
-      <!-- Этот блок скрыт, потому что основное сообщение — в форме -->
-    </div>
-  `;
+//   // Отображаем в сетке блюд (верх страницы)
+//   const grid = document.getElementById('order-dishes-grid');
+//   grid.innerHTML = `
+//     <div style="grid-column: 1 / -1; text-align: center; padding: 30px; display: none;">
+//       <!-- Этот блок скрыт, потому что основное сообщение — в форме -->
+//     </div>
+//   `;
 
-  // ОСНОВНОЕ: отображаем в левой части формы
   const orderSummary = document.getElementById('order-summary');
   orderSummary.innerHTML = `
-    <div id="nothing-selected" style="padding: 20px; text-align: center; color: #666;">
+    <div id="nothing-selected" style="padding: 20px 20px 20px 0px; text-align: center; color: #666;">
       Ничего не выбрано. Чтобы добавить блюда в заказ, перейдите на страницу 
       <a href="lunch.html" style="color: #28a745; text-decoration: underline; font-weight: bold;">Собрать ланч</a>.
     </div>
@@ -178,7 +177,7 @@ function updateOrderSummary(selectedDishes) {
   const hasSelected = hasSoup || hasMain || hasDrink || hasStarter || hasDessert;
 
   if (!hasSelected) {
-    orderSummary.innerHTML = '<div id="nothing-selected">Ничего не выбрано</div>';
+    showEmptyOrder();
     return;
   }
 
