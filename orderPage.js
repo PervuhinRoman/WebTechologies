@@ -36,21 +36,20 @@ async function initOrderPage() {
 }
 
 function showEmptyOrder() {
-    //   // Отображаем в сетке блюд (верх страницы)
-    //   const grid = document.getElementById('order-dishes-grid');
-    //   grid.innerHTML = `
-    //     <div style="grid-column: 1 / -1; text-align: center; padding: 30px; display: none;">
-    //       <!-- Этот блок скрыт, потому что основное сообщение — в форме -->
-    //     </div>
-    //   `;
+    // Отображаем в сетке блюд (верх страницы)
+    const grid = document.getElementById('order-dishes-grid');
+    grid.innerHTML = `
+    <div id="nothing-selected" style="padding: 20px 20px 20px 0px; text-align: left; color: #666;">
+    Ничего не выбрано. Чтобы добавить блюда в заказ, перейдите на страницу 
+    <a href="lunch.html" style="color: #28a745; text-decoration: underline; font-weight: bold;">собрать ланч</a>.
+    </div>`;
 
     const orderSummary = document.getElementById('order-summary');
     orderSummary.innerHTML = `
-    <div id="nothing-selected" style="padding: 20px 20px 20px 0px; text-align: center; color: #666;">
-      Ничего не выбрано. Чтобы добавить блюда в заказ, перейдите на страницу 
-      <a href="lunch.html" style="color: #28a745; text-decoration: underline; font-weight: bold;">Собрать ланч</a>.
-    </div>
-  `;
+    <div id="nothing-selected" style="padding: 20px 20px 20px 0px; text-align: left; color: #666;">
+    Ничего не выбрано. Чтобы добавить блюда в заказ, перейдите на страницу 
+    <a href="lunch.html" style="color: #28a745; text-decoration: underline; font-weight: bold;">собрать ланч</a>.
+    </div>`;
 }
 
 function renderOrderDishes(selectedDishes, allDishes) {
@@ -77,16 +76,14 @@ function renderOrderDishes(selectedDishes, allDishes) {
         <p class="price">${dish.price}₽</p>
         <p class="name">${dish.name}</p>
         <p class="weight">${dish.count}</p>
-        <button class="btn-delete" data-category="${cat.key}">Удалить</button>
-      `;
+        <button class="btn-delete" data-category="${cat.key}">Удалить</button>`;
         } else {
             card.innerHTML = `
         <div style="height: 150px; display: flex; align-items: center; justify-content: center; color: #888;">
-          ${cat.title} не выбран
+        ${cat.title} не выбран
         </div>
         <p class="name" style="text-align: center; margin-top: 10px;">${cat.title}</p>
-        <button class="btn-delete" data-category="${cat.key}" disabled>Удалить</button>
-      `;
+        <button class="btn-delete" data-category="${cat.key}" disabled>Удалить</button>`;
         }
 
         grid.appendChild(card);
