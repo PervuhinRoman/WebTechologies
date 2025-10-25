@@ -111,12 +111,12 @@ async function loadOrders() {
 
         if (orders.length === 0) {
             ordersList.innerHTML = `
-        <tr>
-          <td colspan="6" style="text-align: center; padding: 30px;">
-            У вас пока нет заказов.
-          </td>
-        </tr>
-      `;
+            <tr>
+            <td colspan="6" style="text-align: center; padding: 30px;">
+                У вас пока нет заказов.
+            </td>
+            </tr>
+        `;
             return;
         }
 
@@ -167,19 +167,19 @@ async function loadOrders() {
             });
 
             html += `
-        <tr>
-          <td>${orderNumber}</td>
-          <td>${date}</td>
-          <td>${composition}</td>
-          <td>${total}₽</td>
-          <td>${deliveryTime}</td>
-          <td class="action-icons">
-            <button title="Подробнее" onclick="showOrderDetails(${order.id})">👁️</button>
-            <button title="Редактировать" onclick="showEditOrder(${order.id})">✏️</button>
-            <button class="delete-btn" title="Удалить" onclick="showDeleteOrder(${order.id})">🗑️</button>
-          </td>
-        </tr>
-      `;
+            <tr>
+            <td>${orderNumber}</td>
+            <td>${date}</td>
+            <td>${composition}</td>
+            <td>${total}₽</td>
+            <td>${deliveryTime}</td>
+            <td class="action-icons">
+                <button title="Подробнее" onclick="showOrderDetails(${order.id})">👁️</button>
+                <button title="Редактировать" onclick="showEditOrder(${order.id})">✏️</button>
+                <button class="delete-btn" title="Удалить" onclick="showDeleteOrder(${order.id})">🗑️</button>
+            </td>
+            </tr>
+        `;
         });
 
         ordersList.innerHTML = html;
@@ -187,11 +187,11 @@ async function loadOrders() {
     } catch (error) {
         console.error('Ошибка загрузки заказов:', error);
         ordersList.innerHTML = `
-      <tr>
-        <td colspan="6" style="text-align: center; padding: 30px; color: red;">
-          Ошибка загрузки данных. Попробуйте позже.
-        </td>
-      </tr>
+        <tr>
+            <td colspan="6" style="text-align: center; padding: 30px; color: red;">
+            Ошибка загрузки данных. Попробуйте позже.
+            </td>
+        </tr>
     `;
     }
 }
@@ -237,32 +237,32 @@ async function showOrderDetails(orderId) {
 
         const details = document.getElementById('viewOrderDetails');
         details.innerHTML = `
-      <div class="form-group">
-        <label>Дата оформления</label>
-        <span>${date}</span>
-      </div>
-      <div class="form-group">
-        <label>Доставка</label>
-        <div>
-          <strong>Имя получателя:</strong> ${escapeHtml(order.full_name)}<br>
-          <strong>Адрес доставки:</strong> ${escapeHtml(order.delivery_address)}<br>
-          <strong>Время доставки:</strong> ${escapeHtml(deliveryTimeText)}<br>
-          <strong>Телефон:</strong> ${escapeHtml(order.phone)}<br>
-          <strong>Email:</strong> ${escapeHtml(order.email)}
+        <div class="form-group">
+            <label>Дата оформления</label>
+            <span>${date}</span>
         </div>
-      </div>
-      <div class="form-group">
-        <label>Комментарий</label>
-        <div>${order.comment ? escapeHtml(order.comment) : '—'}</div>
-      </div>
-      <div class="form-group">
-        <label>Состав заказа</label>
-        ${compositionHtml || '<div>—</div>'}
-      </div>
-      <div class="form-group">
-        <strong>Стоимость:</strong> ${getTotalPrice(order)}₽
-      </div>
-    `;
+        <div class="form-group">
+            <label>Доставка</label>
+            <div>
+            <strong>Имя получателя:</strong> ${escapeHtml(order.full_name)}<br>
+            <strong>Адрес доставки:</strong> ${escapeHtml(order.delivery_address)}<br>
+            <strong>Время доставки:</strong> ${escapeHtml(deliveryTimeText)}<br>
+            <strong>Телефон:</strong> ${escapeHtml(order.phone)}<br>
+            <strong>Email:</strong> ${escapeHtml(order.email)}
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Комментарий</label>
+            <div>${order.comment ? escapeHtml(order.comment) : '—'}</div>
+        </div>
+        <div class="form-group">
+            <label>Состав заказа</label>
+            ${compositionHtml || '<div>—</div>'}
+        </div>
+        <div class="form-group">
+            <strong>Стоимость:</strong> ${getTotalPrice(order)}₽
+        </div>
+        `;
 
         viewModal.style.display = 'block';
     } catch (err) {
