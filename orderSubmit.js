@@ -1,5 +1,3 @@
-// orderSubmit.js
-
 const API_URL = 'https://edu.std-900.ist.mospolytech.ru/labs/api/orders';
 const API_KEY = 'fd0ca332-f6dc-4694-9d19-27e96b8648d0';
 

@@ -96,7 +96,7 @@ function getMissingMessage(selected) {
   return 'Недостаточно блюд для оформления заказа';
 }
 
-// Функция showNotification (без изменений)
+// Функция showNotification
 function showNotification(message) {
   const existing = document.getElementById('notification-overlay');
   if (existing) existing.remove();

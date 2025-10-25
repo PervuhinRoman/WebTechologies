@@ -459,8 +459,7 @@ function showNotification(message, isSuccess = false) {
     justify-content: center;
     align-items: center;
     z-index: 9999;
-    padding: 20px;
-  `;
+    padding: 20px;`;
 
     const notification = document.createElement('div');
     notification.style.cssText = `
@@ -469,8 +468,7 @@ function showNotification(message, isSuccess = false) {
     border-radius: 10px;
     text-align: center;
     max-width: 400px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-  `;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);`;
 
     const text = document.createElement('p');
     text.textContent = message;
@@ -478,8 +476,7 @@ function showNotification(message, isSuccess = false) {
     font-size: 1.1rem;
     margin-bottom: 20px;
     line-height: 1.4;
-    color: ${isSuccess ? '#28a745' : '#e74c3c'};
-  `;
+    color: ${isSuccess ? '#28a745' : '#e74c3c'};`;
 
     const button = document.createElement('button');
     button.textContent = 'Окей 👌';
@@ -490,8 +487,7 @@ function showNotification(message, isSuccess = false) {
     background: none;
     color: ${isSuccess ? '#28a745' : '#e74c3c'};
     font-size: 1rem;
-    cursor: pointer;
-  `;
+    cursor: pointer;`;
 
     button.addEventListener('click', () => overlay.remove());
 

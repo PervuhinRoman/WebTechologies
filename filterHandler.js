@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-  // Обработчик клика по фильтру
   document.addEventListener('click', function(e) {
     if (e.target.matches('.filters button')) {
       const button = e.target;
